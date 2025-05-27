@@ -14,12 +14,20 @@ struct Aluno {
 };
 
 void Login() {
+	cout << " _                 _       "<< endl;
+	cout << "| |               (_)      "<< endl;
+ 	cout << "| |     ___   __ _ _ _ __  "<< endl;
+	cout << "| |    / _ \ / _` | | '_ \ "<< endl;
+	cout << "| |___| (_) | (_| | | | | |"<< endl;
+	cout << "|______\___/ \__, |_|_| |_|"<< endl;
+   	cout << "              __/ |        "<< endl;
+    cout << "             |___/         "<< endl;
     string usuario, senha;
-    const string usuarioCorreto = "hugo";
+    const string usuarioCorreto = "Admin";
     const string senhaCorreta = "1234";
-
+	
     while (true) {
-        cout << "=====RELIZE O LOGIN =====\n";
+        cout << "=====REALIZE O LOGIN =====\n";
         cout << "Usuario: ";
         cin >> usuario;
         cout << "Senha: ";
@@ -112,6 +120,12 @@ int main() {
 
     do {
     	system("cls");
+    	cout << "   __  __                  "<< endl;
+    	cout << "  |  \/  |                 "<< endl;
+		cout << "  | \  / | ___ _ __  _   _ "<< endl;
+		cout << "  | |\/| |/ _ \ '_ \| | | |"<< endl;
+		cout << "  | |  | |  __/ | | | |_| |"<< endl;
+		cout << "  |_|  |_|\___|_| |_|\__,_|"<< endl;
         cout << "\n Menu \n";
         cout << "1. Tabela de Notas\n";
         cout << "2. Incluir Notas\n";
@@ -160,19 +174,19 @@ int main() {
                 break;
 
             case 2:
-                cout << "Digite o nome do aluno: ";
+                cout << "Digite o nome do aluno:";
                 cin.ignore(1000, '\n');
                 getline(cin, aluno.nome);
                 
-            do {
+            
     			cout << "Digite o RGM do aluno (maximo 8 caracteres): ";				
 				getline(cin, aluno.rgm);
 
-    			if (aluno.rgm.length() > 8 || aluno.rgm.empty()) {
-       			 cout << "RGM invalido. Deve ter entre 1 e 8 caracteres.\n";}
-				} 
-				 while (aluno.rgm.length() > 8 || aluno.rgm.empty());
-
+    			while (aluno.rgm.length() > 8 || aluno.rgm.length() < 8 || aluno.rgm.empty()) {
+       			 	cout << "RGM invalido. Insira um RGM entre 1 e 8 caracteres:";
+       				getline(cin, aluno.rgm);
+				}
+				
                 cout << "Digite a nota A1: ";
                 cin >> aluno.A1;
                 while (aluno.A1 < 0 || aluno.A1 > 5) {
@@ -193,11 +207,12 @@ int main() {
                 } else {
                     aluno.AF = 0;
                 }
+            
 
                 alunos.push_back(aluno);
                 system("cls");
                 break;
-
+			
             case 3:
                 system("cls");
                 Filtrar(alunos);
@@ -218,6 +233,7 @@ int main() {
 
             default:
                 cout << "Opcao invalida.\n";
+        
         }
 
     } while (opcao != 5);
